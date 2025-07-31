@@ -2253,83 +2253,198 @@ body {
 }
 
 
-/* Hide nav__menu by default on mobile, show when open */
+/* MOBILE ONLY FIXES */
 
 @media (max-width: 700px) {
+    /* HEADER: Reduce height and padding, center brand and burger */
+    .header {
+        height: 5.5rem !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+    }
+    .nav--centered {
+        height: 5.5rem !important;
+        min-height: 0 !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .nav__brand {
+        font-size: 1.7rem !important;
+        padding: 0.5rem 0 0.5rem 0.5rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .nav__oblong-bg {
+        min-width: 0 !important;
+        width: 100vw !important;
+        padding: 0.2rem 0.7rem !important;
+        justify-content: flex-end !important;
+        background: none !important;
+        box-shadow: none !important;
+        position: static !important;
+    }
     .nav__toggle {
-        display: block;
+        margin-left: auto !important;
+        margin-right: 1.5rem !important;
+        font-size: 2.3rem !important;
+        padding: 0.2rem 0.7rem !important;
         background: none;
         border: none;
-        font-size: 2.2rem;
         color: #fff;
-        margin-left: 9.5rem;
         z-index: 2002;
     }
+    /* MENU: Centered, smaller icons, dark bg */
     .nav__menu {
         display: none;
-        position: absolute;
-        top: 100%;
+        position: fixed !important;
+        top: 0;
         left: 0;
-        width: 100vw;
-        background: rgba(30, 30, 40, 0.98);
-        box-shadow: 0 8px 32px rgba(168, 85, 247, 0.18);
-        border-radius: 0 0 1.2rem 1.2rem;
-        z-index: 2001;
-        padding: 1.5rem 0 2rem 0;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: var(--color-bg-primary) !important;
+        z-index: 3000 !important;
+        padding: 0;
+        margin: 0;
+        align-items: center;
+        justify-content: center;
         text-align: center;
     }
     .nav__menu--open {
-        display: block;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         animation: fadeInMenu 0.3s;
     }
     @keyframes fadeInMenu {
         from {
             opacity: 0;
-            transform: translateY(-10px);
         }
         to {
             opacity: 1;
-            transform: translateY(0);
         }
     }
     .nav__list {
-        flex-direction: column;
-        gap: 2rem;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column !important;
+        gap: 2.2rem !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100vw !important;
         padding: 0;
+        margin: 0;
     }
-    .nav__oblong-bg {
-        min-width: 0;
-        width: 100vw;
-        left: 0;
-        right: 0;
-        padding: 0.5rem 0.7rem;
-        justify-content: center;
-        position: relative;
+    .nav__item {
+        margin: 0 !important;
     }
-}
-
-
-/* Hide nav__toggle on desktop */
-
-@media (min-width: 701px) {
-    .nav__toggle {
+    .nav__icon-link {
+        font-size: 2.2rem !important;
+        color: #fff !important;
+        padding: 0.7rem 0 !important;
+    }
+    .nav__icon-link[data-tooltip]::after {
         display: none !important;
     }
-    .nav__menu {
-        display: block !important;
-        position: static;
-        background: none;
-        box-shadow: none;
-        border-radius: 0;
-        padding: 0;
+    /* HERO: Center everything, adjust sizes */
+    .hero__wrapper {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        padding: 2rem 0 0 0 !important;
+        min-height: unset !important;
     }
-    .nav__list {
-        flex-direction: row;
-        gap: 1.2rem;
-        align-items: center;
-        justify-content: center;
+    .hero__content {
+        text-align: center !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100%;
+        margin: 0 auto !important;
+    }
+    .hero__title {
+        font-size: 2.1rem !important;
+        margin-bottom: 1.2rem !important;
+        text-align: center !important;
+    }
+    /* Move degree below title, before description */
+    .hero__degree {
+        font-size: 1.25rem !important;
+        font-weight: 600 !important;
+        margin-bottom: 1.2rem !important;
+        margin-top: 0.2rem !important;
+        color: #fff !important;
+        text-align: center !important;
+        order: 2;
+    }
+    /* Hide original hero__details Chemical Engineering Graduate */
+    .hero__details .hero__detail-item:first-child {
+        display: none !important;
+    }
+    /* HERO DESCRIPTION */
+    .hero__description {
+        font-size: 1.1rem !important;
+        margin-bottom: 1.2rem !important;
+        text-align: center !important;
+    }
+    /* HERO INFO (Years/Projects) */
+    .hero__info {
+        gap: 1.2rem !important;
+        margin-bottom: 1.2rem !important;
+        padding-top: 1rem !important;
+        border-top: 1px solid var(--color-border);
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+    }
+    .hero__info-wrapper {
+        min-width: 90px !important;
+        padding: 0.2rem 0.5rem !important;
+    }
+    .hero__info-number {
+        font-size: 1.3rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+    .hero__info-title {
+        font-size: 0.9rem !important;
+        line-height: 1.1 !important;
+    }
+    /* HERO IMAGE: Center and resize */
+    .hero__image-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+    }
+    .pulsing-gradient-circle {
+        width: 180px !important;
+        height: 180px !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+    }
+    .pulsing-gradient-img {
+        inset: 10px !important;
+    }
+    .pulsing-gradient-img img {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 160px !important;
+        max-height: 160px !important;
+        object-fit: cover !important;
+        margin: 0 auto !important;
+    }
+    /* HERO DETAILS: Adjust location/city/email */
+    .hero__details {
+        margin-bottom: 1.2rem !important;
+        gap: 0.5rem !important;
+    }
+    .hero__detail-item {
+        font-size: 1rem !important;
+        margin-bottom: 0.2rem !important;
+        justify-content: center !important;
+    }
+    .hero__detail-text {
+        font-size: 1rem !important;
     }
 }
