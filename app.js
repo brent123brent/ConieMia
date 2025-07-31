@@ -99,35 +99,23 @@ sr.reveal(".qualification__footer .btn, .contact__btn", { origin: "right" });
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    // NAV TOGGLE (safe)
-    const navMenu = document.getElementById("nav-menu");
     const navToggle = document.getElementById("nav-toggle");
-    const navItem = document.querySelectorAll(".nav__item");
-    const header = document.getElementById("header");
+    const navMenu = document.querySelector(".nav__menu");
 
     if (navToggle && navMenu) {
-        navToggle.addEventListener("click", () => {
+        navToggle.addEventListener("click", function() {
             navMenu.classList.toggle("nav__menu--open");
-            changeIcon();
         });
     }
-    navItem.forEach((item) => {
-        item.addEventListener("click", () => {
-            if (navMenu && navMenu.classList.contains("nav__menu--open")) {
+
+    // Optional: Close menu when a link is clicked (on mobile)
+    document.querySelectorAll('.nav__link').forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 700 && navMenu.classList.contains("nav__menu--open")) {
                 navMenu.classList.remove("nav__menu--open");
             }
-            changeIcon();
         });
     });
-
-    function changeIcon() {
-        if (!navToggle || !navMenu) return;
-        if (navMenu.classList.contains("nav__menu--open")) {
-            navToggle.classList.replace("ri-menu-3-line", "ri-close-line");
-        } else {
-            navToggle.classList.replace("ri-close-line", "ri-menu-3-line");
-        }
-    }
 
     // EXPERIENCE MODAL
     const modal = document.getElementById("experience-modal");
