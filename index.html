@@ -27,8 +27,11 @@
             </a>
             <div class="nav__oblong-bg">
                 <button id="nav-toggle" class="nav__toggle" aria-label="Open navigation">
-                <i class="ri-menu-3-line"></i>
-            </button>
+                    <i class="ri-menu-3-line"></i>
+                </button>
+                <button id="nav-close" class="nav__close" aria-label="Close navigation" style="display:none;">
+                    <i class="ri-close-line"></i>
+                </button>
                 <div class="nav__menu">
                     <ul class="nav__list">
                         <li class="nav__item">
@@ -597,6 +600,37 @@
                     });
                 });
             }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navToggle = document.getElementById("nav-toggle");
+            const navClose = document.getElementById("nav-close");
+            const navMenu = document.querySelector(".nav__menu");
+
+            function openMenu() {
+                navMenu.classList.add("nav__menu--open");
+                navToggle.style.display = "none";
+                navClose.style.display = "block";
+            }
+
+            function closeMenu() {
+                navMenu.classList.remove("nav__menu--open");
+                navToggle.style.display = "block";
+                navClose.style.display = "none";
+            }
+
+            navToggle.addEventListener("click", openMenu);
+            navClose.addEventListener("click", closeMenu);
+
+            // Optional: Close menu when a link is clicked (on mobile)
+            document.querySelectorAll('.nav__link').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 700 && navMenu.classList.contains("nav__menu--open")) {
+                        closeMenu();
+                    }
+                });
+            });
         });
     </script>
 </body>
