@@ -2512,7 +2512,7 @@ body {
     }
     .timeline__item::after {
         left: 50% !important;
-        top: -77px !important;
+        top: -87px !important;
         /* Move logo higher above the box */
         transform: translate(-50%, 0) !important;
         position: absolute !important;
